@@ -1,7 +1,7 @@
 import type { BatchParamDef } from "@/types";
 
 export const APP_NAME = "Czeno";
-export const ORG_NAME = "Furukawa Thermal Laguna";
+export const ORG_NAME = "Czeno QMS";
 export const APP_TAGLINE = "Quality Intelligence for heat sink manufacturing";
 
 // Reference "now" the whole demo is pinned to, so seeded ages (days-open,

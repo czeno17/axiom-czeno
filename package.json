@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "Czeno Quality Intelligence — client-side QMS demo for Furukawa Thermal Laguna heat sink manufacturing.",
+  "description": "Czeno Quality Intelligence — client-side QMS demo for heat sink manufacturing.",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",

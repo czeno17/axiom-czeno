@@ -1,4 +1,4 @@
-# Czeno — Quality Intelligence for Furukawa Thermal Laguna
+# Czeno — Quality Intelligence [Your Company/System Name]
 
 A client-side interactive demo of an intelligent QMS layer for heat sink
 manufacturing (extrusion, fin assembly/bonding, plating, final QA). Every
@@ -77,13 +77,13 @@ This repo is intentionally infrastructure-free so it runs anywhere with
 just `npm install`. Swapping in real infrastructure is a matter of
 replacing the implementations behind the same interfaces:
 
-| Demo (this repo)                         | Production                                              |
-| ----------------------------------------- | --------------------------------------------------------- |
-| `services/ai/tfidf.ts` cosine similarity  | OpenAI/Voyage embeddings + PostgreSQL `pgvector`          |
-| `services/ai/classifier.ts` keyword rules | Structured-output call to an LLM (GPT-4o-mini / Claude)   |
-| Zustand stores, in-memory                 | REST/GraphQL API backed by PostgreSQL + Redis + BullMQ    |
-| No auth                                   | JWT + refresh tokens, OAuth2                               |
-| `services/data/seedData.ts`               | CSV/Excel ingestion + live ERP/MES/LIMS connector          |
+| Demo (this repo)                          | Production                                              |
+| ----------------------------------------- | ------------------------------------------------------- |
+| `services/ai/tfidf.ts` cosine similarity  | OpenAI/Voyage embeddings + PostgreSQL `pgvector`        |
+| `services/ai/classifier.ts` keyword rules | Structured-output call to an LLM (GPT-4o-mini / Claude) |
+| Zustand stores, in-memory                 | REST/GraphQL API backed by PostgreSQL + Redis + BullMQ  |
+| No auth                                   | JWT + refresh tokens, OAuth2                            |
+| `services/data/seedData.ts`               | CSV/Excel ingestion + live ERP/MES/LIMS connector       |
 
 `services/ai/classifier.ts` and `services/ai/similarity.ts` are the two
 files to replace first — their function signatures
