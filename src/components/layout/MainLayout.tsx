@@ -1,15 +1,22 @@
-import type { ReactNode } from "react";
+// src/components/layout/MainLayout.tsx
+
 import { Sidebar } from "./Sidebar";
 import { Header } from "./Header";
 
-export function MainLayout({ children }: { children: ReactNode }) {
+interface MainLayoutProps {
+  children: React.ReactNode;
+}
+
+export function MainLayout({ children }: MainLayoutProps) {
   return (
-    <div className="min-h-screen w-full bg-slate-50 text-slate-900 font-sans flex">
+    <div className="flex min-h-screen bg-slate-50">
       <Sidebar />
-      <main className="flex-1 min-w-0 flex flex-col">
+      <div className="flex-1 flex flex-col">
         <Header />
-        <div className="flex-1 overflow-auto p-6">{children}</div>
-      </main>
+        <main className="flex-1 p-6 overflow-auto">
+          {children} {/* ← This must be here */}
+        </main>
+      </div>
     </div>
   );
 }

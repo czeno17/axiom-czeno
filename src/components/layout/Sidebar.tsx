@@ -1,38 +1,51 @@
-import { ShieldCheck } from "lucide-react";
-import { NAV_ITEMS } from "@/config/navigation";
-import { useUiStore } from "@/stores/uiStore";
-import { useEvents } from "@/hooks/useEvents";
-import { APP_NAME, APP_TAGLINE } from "@/config/constants";
+// src/components/layout/Sidebar.tsx
+
+import { useActiveTabStore } from "@/stores/activeTabStore";
 
 export function Sidebar() {
-  const activeTab = useUiStore((s) => s.activeTab);
-  const setActiveTab = useUiStore((s) => s.setActiveTab);
-  const { events, avgConfidence } = useEvents();
+  const { activeTab, setActiveTab } = useActiveTabStore();
+
+  const navItems = [
+    { id: "overview", label: "Overview" },
+    { id: "triage", label: "CAPA Triage" },
+    { id: "capa", label: "CAPA Management" },
+    { id: "search", label: "Semantic Search" },
+    { id: "goldenBatch", label: "Golden Batch" },
+    { id: "propagation", label: "Propagation" },
+    { id: "rcaQuality", label: "RCA Quality" },
+    { id: "auditLog", label: "Audit Log" },
+  ];
 
   return (
-    <aside className="w-56 shrink-0 bg-slate-950 text-slate-300 flex flex-col">
-      <div className="px-5 py-5 border-b border-slate-800">
-        <div className="flex items-center gap-2 text-white font-semibold text-lg">
-          <ShieldCheck className="w-6 h-6 text-indigo-400" /> {APP_NAME}
-        </div>
-        <p className="text-xs text-slate-500 mt-1">{APP_TAGLINE}</p>
+    <aside className="w-64 bg-slate-900 text-white h-screen sticky top-0 overflow-y-auto">
+      <div className="p-4 border-b border-slate-700">
+        <h1 className="text-xl font-bold text-white">CZENO</h1>
+        <p className="text-xs text-slate-400">Intelligent Quality Layer</p>
       </div>
-      <nav className="flex-1 py-3">
-        {NAV_ITEMS.map((item) => (
-          <button
-            key={item.id}
-            onClick={() => setActiveTab(item.id)}
-            className={`w-full flex items-center gap-3 px-5 py-2.5 text-sm text-left transition-colors ${
-              activeTab === item.id ? "bg-indigo-600 text-white" : "hover:bg-slate-900 text-slate-300"
-            }`}
-          >
-            <item.icon className="w-4 h-4" /> {item.label}
-          </button>
-        ))}
+
+      <nav className="p-2">
+        {navItems.map((item) => {
+          const isActive = activeTab === item.id;
+          return (
+            <button
+              key={item.id}
+              onClick={() => setActiveTab(item.id)}
+              className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-colors text-left ${
+                isActive
+                  ? "bg-blue-600 text-white font-medium shadow-lg shadow-blue-600/20"
+                  : "text-slate-300 hover:bg-slate-800 hover:text-white"
+              }`}
+            >
+              <span className="text-lg">•</span>
+              <span>{item.label}</span>
+              {isActive && <span className="ml-auto w-1.5 h-1.5 rounded-full bg-white" />}
+            </button>
+          );
+        })}
       </nav>
-      <div className="px-5 py-4 border-t border-slate-800 text-xs text-slate-500 font-mono leading-relaxed">
-        events indexed: {events.length}
-        <br /> avg confidence: {Math.round(avgConfidence * 100)}%
+
+      <div className="absolute bottom-0 w-full p-4 border-t border-slate-700">
+        <p className="text-xs text-slate-500">v1.0.0</p>
       </div>
     </aside>
   );

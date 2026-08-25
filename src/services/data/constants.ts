@@ -65,10 +65,50 @@ export const STATUS_BADGE: Record<string, string> = {
 };
 
 export const PARAMS: BatchParamDef[] = [
-  { key: "extrusionTemp", label: "Extrusion Temp (C)", mean: 450, sigma: 8 },
-  { key: "coolingRate", label: "Cooling Rate (C/min)", mean: 5, sigma: 0.8 },
-  { key: "humidity", label: "Humidity (%RH)", mean: 45, sigma: 5 },
-  { key: "platingCurrent", label: "Plating Current (A)", mean: 120, sigma: 4 },
+  {
+    key: "extrusionTemp",
+    label: "Extrusion Temp (C)",
+    mean: 450,
+    sigma: 8,
+    unit: "",
+    goldenWindow: {
+      lower: 0,
+      upper: 0,
+    },
+  },
+  {
+    key: "coolingRate",
+    label: "Cooling Rate (C/min)",
+    mean: 5,
+    sigma: 0.8,
+    unit: "",
+    goldenWindow: {
+      lower: 0,
+      upper: 0,
+    },
+  },
+  {
+    key: "humidity",
+    label: "Humidity (%RH)",
+    mean: 45,
+    sigma: 5,
+    unit: "",
+    goldenWindow: {
+      lower: 0,
+      upper: 0,
+    },
+  },
+  {
+    key: "platingCurrent",
+    label: "Plating Current (A)",
+    mean: 120,
+    sigma: 4,
+    unit: "",
+    goldenWindow: {
+      lower: 0,
+      upper: 0,
+    },
+  },
 ];
 
 export const RCA_TARGET_RATE = 80;
